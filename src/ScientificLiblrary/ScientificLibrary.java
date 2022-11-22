@@ -119,8 +119,7 @@ public class ScientificLibrary extends ScientificLibraryHall implements ILibrary
 
     @Override
     public ScientificLibrary clone() {
-        ScientificLibrary library = null;
-        library = (ScientificLibrary) super.clone();
+        ScientificLibrary library = (ScientificLibrary) super.clone();
         return library;
     }
 

@@ -105,8 +105,9 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
     }
 
     @Override
-    public Object clone() {
-        return null;
+    public ChildrenLibraryHall clone() {
+        ChildrenLibraryHall hall = new ChildrenLibraryHall(childrenHallName, array);
+        return hall;
     }
 
     // добавление книги по номеру

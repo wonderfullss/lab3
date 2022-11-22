@@ -23,9 +23,14 @@ public class Test {
         Hall[0] = new ChildrenLibraryHall("12+", books);
         Hall[1] = new ChildrenLibraryHall("16+", books1);
         Hall[2] = new ChildrenLibraryHall("14+", books2);
+        ChildrenLibrary library = new ChildrenLibrary(Hall);
         try {
             ChildrenBook book = books[2].clone();
+            ChildrenLibraryHall hallFree = Hall[0].clone();
+            ChildrenLibrary libraryFree = library.clone();
             System.out.println(book);
+            System.out.println(hallFree);
+            System.out.println(libraryFree);
             System.out.println(books[2].hashCode());
             System.out.println(book.hashCode());
             System.out.println(books[1].hashCode());
@@ -35,7 +40,6 @@ public class Test {
             System.out.println(Hall[1].hashCode());
             System.out.println(Hall[2].hashCode());
             ChildrenBook temp = new ChildrenBook("Бесы", "Dostoevskiy", 1200, 1869, 16);
-            ChildrenLibrary library = new ChildrenLibrary(Hall);
             System.out.println(library.returnBook(2));
             library.addBook(temp, 6);
             System.out.println(library);

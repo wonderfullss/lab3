@@ -21,8 +21,9 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
     }
 
     @Override
-    public Object clone() {
-        return null;
+    public ChildrenLibrary clone() {
+        ChildrenLibrary library = new ChildrenLibrary(arrayHall);
+        return library;
     }
 
     @Override

@@ -95,8 +95,7 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
 
     @Override
     public ScientificLibraryHall clone() {
-        ScientificLibraryHall hall = null;
-        hall = (ScientificLibraryHall) super.clone();
+        ScientificLibraryHall hall = (ScientificLibraryHall) super.clone();
         return hall;
     }
 

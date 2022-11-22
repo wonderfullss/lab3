@@ -4,7 +4,7 @@ import Interface.IBook;
 
 import java.util.Objects;
 
-public class Book implements Cloneable {
+public class Book implements Cloneable, IBook {
     private String author, name;
     private int year;
     private double price;
@@ -21,6 +21,11 @@ public class Book implements Cloneable {
         this.name = "undefined";
         this.price = 0.0;
         this.year = 0;
+    }
+
+    public Book clone() {
+        Book book = new Book(author, name, price, year);
+        return book;
     }
 
     @Override
