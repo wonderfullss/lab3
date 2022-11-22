@@ -1,11 +1,11 @@
-package libraries;
+package Interface;
+
+import libraries.ChildrenLibraryHall;
 
 public interface ILibrary {
     public int getCountHall();
 
     public void sortByPrice();
-
-   // public ChildrenBook getBestBook();
 
     public void changeHall(int number, ChildrenLibraryHall other);
 

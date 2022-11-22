@@ -1,7 +1,12 @@
 package libraries;
 
+import Expection.BookIndexOutOfBoundsException;
+import Expection.HallIndexOutOfBoundsException;
+import Expection.InvalidBookCountException;
+import Expection.InvalidBookPriceException;
+
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException, BookIndexOutOfBoundsException, HallIndexOutOfBoundsException, InvalidBookCountException, InvalidBookPriceException {
         ChildrenBook[] books = new ChildrenBook[3];
         books[0] = new ChildrenBook("Borodino", "Lermontov", 1200, 1812, 7);
         books[1] = new ChildrenBook("Onegin", "Pushkin", 1600, 1856, 12);
@@ -18,25 +23,33 @@ public class Test {
         Hall[0] = new ChildrenLibraryHall("12+", books);
         Hall[1] = new ChildrenLibraryHall("16+", books1);
         Hall[2] = new ChildrenLibraryHall("14+", books2);
-        ChildrenBook temp = new ChildrenBook("Бесы", "Dostoevskiy", 1200, 1869, 16);
-        ChildrenLibrary library = new ChildrenLibrary(Hall);
         try {
+            ChildrenBook book = books[2].clone();
+            System.out.println(book);
+            System.out.println(books[2].hashCode());
+            System.out.println(book.hashCode());
+            System.out.println(books[1].hashCode());
+            System.out.println(books[2].hashCode());
+            System.out.println(books[0].equals(books[1]));
+            System.out.println(Hall[0].hashCode());
+            System.out.println(Hall[1].hashCode());
+            System.out.println(Hall[2].hashCode());
+            ChildrenBook temp = new ChildrenBook("Бесы", "Dostoevskiy", 1200, 1869, 16);
+            ChildrenLibrary library = new ChildrenLibrary(Hall);
             System.out.println(library.returnBook(2));
-        } catch (BookIndexOutOfBoundsException error) {
-            System.out.println(error.getExpect());
-        }
-        library.addBook(temp, 6);
-        System.out.println(library);
-        try {
+            library.addBook(temp, 6);
+            System.out.println(library);
             library.delBook(-1);
-        } catch (BookIndexOutOfBoundsException error) {
-            System.out.println(error.getExpect());
-        }
-        System.out.println(library);
-        try {
+            System.out.println(library);
             library.changeBook(temp, 0);
-        } catch (BookIndexOutOfBoundsException error) {
-            System.out.println(error.getExpect());
+        } catch (BookIndexOutOfBoundsException e) {
+            System.out.println(e.getExpect());
+        } catch (HallIndexOutOfBoundsException e) {
+            System.out.println(e.getExpect());
+        } catch (InvalidBookPriceException e) {
+            System.out.println(e.getExpect());
+        } catch (InvalidBookCountException e) {
+            System.out.println(e.getExpect());
         }
     }
 }

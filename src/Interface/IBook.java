@@ -1,4 +1,4 @@
-package libraries;
+package Interface;
 
 public interface IBook {
     public void setAuthor(String author);

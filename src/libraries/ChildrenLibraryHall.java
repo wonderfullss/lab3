@@ -1,8 +1,13 @@
 package libraries;
 
-import java.util.Arrays;
+import Expection.BookIndexOutOfBoundsException;
+import Expection.InvalidBookPriceException;
+import Interface.IHall;
 
-public class ChildrenLibraryHall implements IHall {
+import java.util.Arrays;
+import java.util.Objects;
+
+public class ChildrenLibraryHall implements IHall, Cloneable {
     private String childrenHallName;
     private ChildrenBook[] array;
 
@@ -88,6 +93,25 @@ public class ChildrenLibraryHall implements IHall {
         }
         add[number] = book;
         this.array = add;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        else if (object == null || object.getClass() != getClass())
+            return false;
+        else {
+            ChildrenLibraryHall book = (ChildrenLibraryHall) object;
+            return book.getChildrenHallName().equals(childrenHallName) && Arrays.equals(book.getArray(), array);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(childrenHallName);
+        result = 31 * result + Arrays.hashCode(array);
+        return result;
     }
 
     //  нига с самой большой ценой

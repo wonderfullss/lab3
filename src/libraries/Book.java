@@ -1,6 +1,10 @@
 package libraries;
 
-public class Book implements IBook {
+import Interface.IBook;
+
+import java.util.Objects;
+
+public class Book implements IBook, Cloneable {
     private String author, name;
     private int year;
     private double price;
@@ -17,6 +21,23 @@ public class Book implements IBook {
         this.name = "undefined";
         this.price = 0.0;
         this.year = 0;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        else if (object == null || object.getClass() != getClass())
+            return false;
+        else {
+            Book book = (Book) object;
+            return book.getName().equals(getName()) && book.getPrice() == getPrice() && book.getAuthor().equals(getAuthor()) && book.getYear() == getYear();
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, name);
     }
 
     public Book(String author, int year) {
@@ -66,4 +87,5 @@ public class Book implements IBook {
     public void setYear(int year) {
         this.year = year;
     }
+
 }

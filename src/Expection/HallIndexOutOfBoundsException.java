@@ -1,4 +1,4 @@
-package libraries;
+package Expection;
 
 public class HallIndexOutOfBoundsException extends  IndexOutOfBoundsException {
     String expect;

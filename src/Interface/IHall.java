@@ -1,4 +1,6 @@
-package libraries;
+package Interface;
+
+import libraries.ChildrenBook;
 
 public interface IHall {
     public void printBooks();
@@ -7,7 +9,7 @@ public interface IHall {
 
     public int countPrice();
 
-    public ChildrenBook returnBook(int index);
+    ChildrenBook returnBook(int index);
 
     public void addBook(ChildrenBook book, int number);
 

@@ -1,4 +1,4 @@
-package libraries;
+package Expection;
 
 public class InvalidBookPriceException extends IllegalArgumentException {
     String expect;

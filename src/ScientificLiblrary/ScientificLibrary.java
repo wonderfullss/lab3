@@ -1,4 +1,11 @@
-package libraries;
+package ScientificLiblrary;
+
+import Expection.BookIndexOutOfBoundsException;
+import Expection.HallIndexOutOfBoundsException;
+import Interface.ILibrary;
+import libraries.ChildrenLibraryHall;
+
+import java.util.Objects;
 
 public class ScientificLibrary extends ScientificLibraryHall implements ILibrary {
 
@@ -93,15 +100,30 @@ public class ScientificLibrary extends ScientificLibraryHall implements ILibrary
     }
 
     public ScientificLibraryHall getHall(int index) {
-        if (isEmpty() || index >= size) {
-            System.out.println("List is empty");
+        if (isEmpty() || index >= size || index < 0) {
+            throw new HallIndexOutOfBoundsException("Error");
+        } else {
+            ScientificLibraryHall temp = head.getNext();
+            for (int i = 0; i < index + 1; i++) {
+                temp = temp.getNext();
+            }
+            return temp;
         }
-        ScientificLibraryHall temp = head.getNext();
-        for (int i = 0; i < index + 1; i++) {
-            ;
-            temp = temp.getNext();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), size, numOfBooks, name);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this) return true;
+        else if (object == null || object.getClass() != getClass()) return false;
+        else {
+            ScientificLibrary book = (ScientificLibrary) object;
+            return book.getCitation() == getCitation() && book.getPrice() == getPrice() && book.getAuthor().equals(getAuthor()) && book.getName().equals(getName()) && book.getYear() == getYear();
         }
-        return temp;
     }
 
     private ScientificLibraryHall getTempByBookInd(int index) {
@@ -146,25 +168,25 @@ public class ScientificLibrary extends ScientificLibraryHall implements ILibrary
         return tempBook;
     }
 
-    public boolean changeHall(int index, ScientificLibraryHall hall) {
-        if (isEmpty() || index >= size) {
-            return false;
+    public void changeHall(int index, ScientificLibraryHall hall) {
+        if (isEmpty() || index >= size || index < 0) {
+            throw new HallIndexOutOfBoundsException("Error");
+        } else {
+            ScientificLibraryHall temp = head;
+            for (int i = 0; i < index + 1; i++) {
+                temp = temp.getNext();
+            }
+            ScientificLibraryHall newHall = hall.clone();
+            newHall.setNext(temp.getNext());
+            newHall.setPrev(temp.getPrev());
+            temp.getNext().setPrev(newHall);
+            temp.getPrev().setNext(newHall);
         }
-        ScientificLibraryHall temp = head;
-        for (int i = 0; i < index + 1; i++) {
-            temp = temp.getNext();
-        }
-        ScientificLibraryHall newHall = hall.clone();
-        newHall.setNext(temp.getNext());
-        newHall.setPrev(temp.getPrev());
-        temp.getNext().setPrev(newHall);
-        temp.getPrev().setNext(newHall);
-        return true;
     }
 
 
     public void changeBook(int index, ScientificBook book) {
-        if (isEmpty() || index >= numOfBooks) {
+        if (isEmpty() || index >= numOfBooks || index < 0) {
             throw new BookIndexOutOfBoundsException(index, "Error");
         } else {
             ScientificLibraryHall temp = getTempByBookInd(index);

@@ -1,8 +1,12 @@
 package libraries;
 
+import Expection.BookIndexOutOfBoundsException;
+import Expection.HallIndexOutOfBoundsException;
+import Interface.ILibrary;
+
 import java.util.Arrays;
 
-public class ChildrenLibrary implements ILibrary {
+public class ChildrenLibrary implements ILibrary, Cloneable {
     ChildrenLibraryHall[] arrayHall;
 
     public ChildrenLibrary(ChildrenLibraryHall[] arrayHall) {
@@ -175,6 +179,23 @@ public class ChildrenLibrary implements ILibrary {
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arrayHall);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        else if (object == null || object.getClass() != getClass())
+            return false;
+        else {
+            ChildrenLibrary book = (ChildrenLibrary) object;
+            return Arrays.equals(book.getArrayHall(), arrayHall);
         }
     }
 

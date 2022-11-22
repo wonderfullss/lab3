@@ -1,4 +1,4 @@
-package libraries;
+package Expection;
 
 public class BookIndexOutOfBoundsException extends IndexOutOfBoundsException {
     private String expect;

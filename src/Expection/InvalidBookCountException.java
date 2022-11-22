@@ -1,4 +1,4 @@
-package libraries;
+package Expection;
 
 public class InvalidBookCountException extends IllegalArgumentException {
     String expect;

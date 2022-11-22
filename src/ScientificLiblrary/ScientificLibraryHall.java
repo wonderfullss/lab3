@@ -1,4 +1,10 @@
-package libraries;
+package ScientificLiblrary;
+
+import Expection.BookIndexOutOfBoundsException;
+import Interface.IHall;
+import libraries.ChildrenBook;
+
+import java.util.Objects;
 
 public class ScientificLibraryHall extends ScientificBook implements Cloneable, IHall {
     private int size = 0;
@@ -40,7 +46,7 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
             head.setNext(head);
         }
         for (int i = 0; i < size; i++) {
-            ScientificBook temp = array[i].clone();
+            ScientificBook temp = (ScientificBook) array[i].clone();
             temp.setNext(head.getNext());
             head.setNext(temp);
         }
@@ -59,7 +65,7 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
             for (int i = 0; i < index; i++) {
                 item = item.getNext();
             }
-            ScientificBook temp = book.clone();
+            ScientificBook temp = (ScientificBook) book.clone();
             temp.setNext(item.getNext());
             item.setNext(temp);
             size++;
@@ -69,7 +75,7 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
     }
 
     public void changeBook(int index, ScientificBook book) {
-        if (!isEmpty() && index < size) {
+        if (!isEmpty() && index < size && index > -1) {
             ScientificBook item = head;
             for (int i = 0; i < index; i++) {
                 item = item.getNext();
@@ -80,6 +86,23 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
         } else {
             throw new BookIndexOutOfBoundsException(index, "Error");
         }
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        else if (object == null || object.getClass() != getClass())
+            return false;
+        else {
+            ScientificLibraryHall book = (ScientificLibraryHall) object;
+            return book.getCitation() == getCitation() && book.getPrice() == getPrice() && book.getAuthor().equals(getAuthor()) && book.getName().equals(getName()) && book.getYear() == getYear();
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), size, name);
     }
 
     public void delBook(int index) {
@@ -96,11 +119,6 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
                 head.setNext(null);
             }
         }
-    }
-
-    @Override
-    public void changeBook(ChildrenBook book, int number) {
-
     }
 
     public void printBooks() {
@@ -208,6 +226,11 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
 
     @Override
     public void addBook(ChildrenBook book, int number) {
+
+    }
+
+    @Override
+    public void changeBook(ChildrenBook book, int number) {
 
     }
 }
