@@ -18,6 +18,10 @@ public class Main {
         ScientificLibraryHall hall2 = new ScientificLibraryHall("hall2", array);
         ScientificLibraryHall hall3 = new ScientificLibraryHall("hall3", array);
         ScientificLibraryHall hall4 = new ScientificLibraryHall("hall4", array);
+        ScientificLibraryHall hall5 = hall1.clone();
+        ScientificBook book5 = book1.clone();
+        System.out.println(book5);
+        System.out.println(hall5);
         ScientificLibraryHall[] arrayHall = {hall1, hall2, hall3, hall4};
         ScientificLibrary lib = new ScientificLibrary(arrayHall);
         try {
@@ -30,7 +34,8 @@ public class Main {
             System.out.println("add Book");
             lib.addBook(0, book4);
             lib.print();
-            System.out.println(Arrays.toString(array));
+            System.out.println(lib);
+            System.out.println(Arrays.toString(arrayHall));
             System.out.println(hall1);
             System.out.println("remove book");
             lib.deleteBook(3135);

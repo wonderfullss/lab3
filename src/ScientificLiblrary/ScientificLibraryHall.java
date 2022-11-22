@@ -4,6 +4,7 @@ import Expection.BookIndexOutOfBoundsException;
 import Interface.IHall;
 import libraries.ChildrenBook;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class ScientificLibraryHall extends ScientificBook implements Cloneable, IHall {
@@ -88,9 +89,21 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
         }
     }
 
+    public Object[] toArray() {
+        Object[] values = new Object[this.size];
+        int index = 0;
+        for (ScientificBook node = this.head.getNext(); node != this.head; node = node.getNext()) {
+            if (index == size)
+                break;
+            values[index] = node;
+            index++;
+        }
+        return values;
+    }
+
     @Override
     public String toString() {
-        return getName() + " " + getYear() + " " + getAuthor() + " " + getPrice() + " " + getCitation() + " " + name;
+        return Arrays.toString(this.toArray());
     }
 
     @Override

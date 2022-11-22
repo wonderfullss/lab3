@@ -6,9 +6,10 @@ import Interface.ILibrary;
 import libraries.ChildrenBook;
 import libraries.ChildrenLibraryHall;
 
+import java.util.Arrays;
 import java.util.Objects;
 
-public class ScientificLibrary extends ScientificLibraryHall implements ILibrary {
+public class ScientificLibrary extends ScientificLibraryHall implements ILibrary, Cloneable {
 
     private int size;
     private int numOfBooks;
@@ -114,7 +115,7 @@ public class ScientificLibrary extends ScientificLibraryHall implements ILibrary
 
     @Override
     public String toString() {
-        return getName() + " " + getYear() + " " + getAuthor() + " " + getPrice() + " " + getCitation() + " " + name;
+        return Arrays.toString(this.toArray());
     }
 
     @Override
@@ -264,6 +265,18 @@ public class ScientificLibrary extends ScientificLibraryHall implements ILibrary
             }
         }
         return arr;
+    }
+
+    public Object[] toArray() {
+        Object[] values = new Object[size];
+        int index = 0;
+        for (ScientificLibraryHall temp = head.getNext(); temp != tail; temp = temp.getNext()) {
+            if (index == size)
+                break;
+            values[index] = temp;
+            index++;
+        }
+        return values;
     }
 
     public boolean print() {
