@@ -43,7 +43,12 @@ public class ScientificBook extends Book implements IBook, Cloneable {
 
     @Override
     public ScientificBook clone() {
-        ScientificBook book = (ScientificBook) super.clone();
+        ScientificBook book = null;
+        try {
+            book = (ScientificBook) super.clone();
+        } catch (CloneNotSupportedException ex) {
+
+        }
         return book;
     }
 
