@@ -113,6 +113,18 @@ public class ScientificLibrary extends ScientificLibraryHall implements ILibrary
     }
 
     @Override
+    public String toString() {
+        return getName() + " " + getYear() + " " + getAuthor() + " " + getPrice() + " " + getCitation() + " " + name;
+    }
+
+    @Override
+    public ScientificLibrary clone() {
+        ScientificLibrary library = null;
+        library = (ScientificLibrary) super.clone();
+        return library;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), size, numOfBooks, name);
     }

@@ -20,18 +20,29 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
         }
     }
 
-
     @Override
     public Object clone() {
         return null;
     }
 
-    // распечатка массива залов библиотеки
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arrayHall);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this) return true;
+        else if (object == null || object.getClass() != getClass()) return false;
+        else {
+            ChildrenLibrary book = (ChildrenLibrary) object;
+            return Arrays.equals(book.getArrayHall(), arrayHall);
+        }
+    }
+
     @Override
     public String toString() {
-        return "ChildrenLibrary{" +
-                "arrayHall=" + Arrays.toString(arrayHall) +
-                '}';
+        return "ChildrenLibrary{" + "arrayHall=" + Arrays.toString(arrayHall) + '}';
     }
 
     // колличество залов в библиотеке
@@ -59,10 +70,8 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
 
     // возвращение зала по его номеру в библиотеке
     public ChildrenLibraryHall returnHall(int number) {
-        if (number < 0 || number > arrayHall.length)
-            throw new HallIndexOutOfBoundsException("Неправильный номер зала");
-        else
-            return arrayHall[number];
+        if (number < 0 || number > arrayHall.length) throw new HallIndexOutOfBoundsException("Неправильный номер зала");
+        else return arrayHall[number];
     }
 
     // возвращение книги по ее номеру
@@ -73,10 +82,8 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
             int tempCount = 0;
             for (int i = 0; i < arrayHall.length; i++)
                 for (int j = 0; j < arrayHall[i].getArray().length; j++) {
-                    if (numberBook == tempCount)
-                        return arrayHall[i].getArray()[j];
-                    else
-                        tempCount++;
+                    if (numberBook == tempCount) return arrayHall[i].getArray()[j];
+                    else tempCount++;
                 }
         }
         return null;
@@ -91,16 +98,13 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
 
     // замена зала по индексу
     public void changeHall(int number, ChildrenLibraryHall other) {
-        if (number < 0 || number > getCountHall())
-            throw new HallIndexOutOfBoundsException("Не правильный номер зала");
+        if (number < 0 || number > getCountHall()) throw new HallIndexOutOfBoundsException("Не правильный номер зала");
         else {
             int tempCount = 0;
             for (int i = 0; i < arrayHall.length; i++)
                 for (int j = 0; j < arrayHall[i].getArray().length; j++) {
-                    if (number == tempCount)
-                        this.arrayHall[i] = other;
-                    else
-                        tempCount++;
+                    if (number == tempCount) this.arrayHall[i] = other;
+                    else tempCount++;
                 }
         }
     }
@@ -113,10 +117,8 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
             int tempCount = 0;
             for (int i = 0; i < arrayHall.length; i++)
                 for (int j = 0; j < arrayHall[i].getArray().length; j++) {
-                    if (numberBook == tempCount)
-                        arrayHall[i].getArray()[j] = other;
-                    else
-                        tempCount++;
+                    if (numberBook == tempCount) arrayHall[i].getArray()[j] = other;
+                    else tempCount++;
                 }
         }
     }
@@ -185,23 +187,6 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
                     }
                 }
             }
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(arrayHall);
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object == this)
-            return true;
-        else if (object == null || object.getClass() != getClass())
-            return false;
-        else {
-            ChildrenLibrary book = (ChildrenLibrary) object;
-            return Arrays.equals(book.getArrayHall(), arrayHall);
         }
     }
 

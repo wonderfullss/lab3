@@ -32,7 +32,6 @@ public class ChildrenBook extends Book implements Cloneable, IBook {
         return Objects.hash(super.hashCode(), minAge);
     }
 
-
     @Override
     public ChildrenBook clone() {
         ChildrenBook clone = null;

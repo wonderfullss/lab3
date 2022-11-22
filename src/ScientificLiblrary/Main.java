@@ -30,6 +30,8 @@ public class Main {
             System.out.println("add Book");
             lib.addBook(0, book4);
             lib.print();
+            System.out.println(Arrays.toString(array));
+            System.out.println(hall1);
             System.out.println("remove book");
             lib.deleteBook(3135);
             lib.print();

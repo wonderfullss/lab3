@@ -89,6 +89,18 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
     }
 
     @Override
+    public String toString() {
+        return getName() + " " + getYear() + " " + getAuthor() + " " + getPrice() + " " + getCitation() + " " + name;
+    }
+
+    @Override
+    public ScientificLibraryHall clone() {
+        ScientificLibraryHall hall = null;
+        hall = (ScientificLibraryHall) super.clone();
+        return hall;
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (object == this)
             return true;
@@ -156,12 +168,6 @@ public class ScientificLibraryHall extends ScientificBook implements Cloneable, 
             p = p.getNext();
         }
         return sum;
-    }
-
-    public ScientificLibraryHall clone() {
-        ScientificLibraryHall hall = null;
-        hall = (ScientificLibraryHall) super.clone();
-        return hall;
     }
 
     public ScientificBook getBestBook() {

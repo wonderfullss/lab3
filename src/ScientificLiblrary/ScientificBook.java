@@ -19,20 +19,9 @@ public class ScientificBook extends Book implements IBook, Cloneable {
         next = null;
     }
 
-    public ScientificBook clone() {
-        ScientificBook copy = null;
-        try {
-            copy = (ScientificBook) super.clone();
-        } catch (CloneNotSupportedException ex) {
-
-        }
-        return copy;
-    }
-
-    public ScientificBook(String bookN, String authorS, double price, int year, double citation) {
-        super(bookN, authorS, price, year);
-        this.citation = citation;
-        next = null;
+    @Override
+    public String toString() {
+        return getName() + " " + getYear() + " " + getAuthor() + " " + getPrice() + " " + getCitation();
     }
 
     @Override
@@ -50,6 +39,23 @@ public class ScientificBook extends Book implements IBook, Cloneable {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), citation);
+    }
+
+    @Override
+    public ScientificBook clone() {
+        ScientificBook book = null;
+        try {
+            book = (ScientificBook) super.clone();
+        } catch (CloneNotSupportedException ex) {
+
+        }
+        return book;
+    }
+
+    public ScientificBook(String bookN, String authorS, double price, int year, double citation) {
+        super(bookN, authorS, price, year);
+        this.citation = citation;
+        next = null;
     }
 
     public ScientificBook getNext() {

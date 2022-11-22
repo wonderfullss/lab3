@@ -78,6 +78,25 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        if (object == this)
+            return true;
+        else if (object == null || object.getClass() != getClass())
+            return false;
+        else {
+            ChildrenLibraryHall book = (ChildrenLibraryHall) object;
+            return book.getChildrenHallName().equals(childrenHallName) && Arrays.equals(book.getArray(), array);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(childrenHallName);
+        result = 31 * result + Arrays.hashCode(array);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "ChildrenLibraryHall{" +
                 " childrenHallName='" + childrenHallName + '\'' +
@@ -100,25 +119,6 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
         this.array = add;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (object == this)
-            return true;
-        else if (object == null || object.getClass() != getClass())
-            return false;
-        else {
-            ChildrenLibraryHall book = (ChildrenLibraryHall) object;
-            return book.getChildrenHallName().equals(childrenHallName) && Arrays.equals(book.getArray(), array);
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(childrenHallName);
-        result = 31 * result + Arrays.hashCode(array);
-        return result;
-    }
-
     //  нига с самой большой ценой
     public ChildrenBook getBestBook() {
         double max = array[0].getPrice();
@@ -131,6 +131,7 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
         }
         return array[index];
     }
+
     public String getChildrenHallName() {
         return childrenHallName;
     }
