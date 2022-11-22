@@ -16,4 +16,6 @@ public interface IHall {
     public void delBook(int number);
 
     public void changeBook(ChildrenBook book, int number);
+
+    public Object clone();
 }

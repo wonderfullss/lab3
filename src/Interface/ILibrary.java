@@ -12,4 +12,6 @@ public interface ILibrary {
     public void printHall();
 
     public ChildrenLibraryHall returnHall(int number);
+
+    public Object clone();
 }

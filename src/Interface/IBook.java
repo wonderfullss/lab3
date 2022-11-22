@@ -16,4 +16,6 @@ public interface IBook {
     public int getYear();
 
     public void setYear(int year);
+
+    public Object clone();
 }

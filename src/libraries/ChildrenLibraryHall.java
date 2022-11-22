@@ -85,6 +85,11 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
                 '}';
     }
 
+    @Override
+    public Object clone() {
+        return null;
+    }
+
     // добавление книги по номеру
     public void addBook(ChildrenBook book, int number) {
         ChildrenBook[] add = Arrays.copyOf(array, array.length + 1);
@@ -126,7 +131,6 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
         }
         return array[index];
     }
-
     public String getChildrenHallName() {
         return childrenHallName;
     }
@@ -142,4 +146,5 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
     public void setArray(ChildrenBook[] array) {
         this.array = array;
     }
+
 }

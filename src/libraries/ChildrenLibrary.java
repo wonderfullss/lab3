@@ -20,6 +20,12 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
         }
     }
 
+
+    @Override
+    public Object clone() {
+        return null;
+    }
+
     // распечатка массива залов библиотеки
     @Override
     public String toString() {

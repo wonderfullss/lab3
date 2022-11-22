@@ -3,6 +3,7 @@ package ScientificLiblrary;
 import Expection.BookIndexOutOfBoundsException;
 import Expection.HallIndexOutOfBoundsException;
 import Interface.ILibrary;
+import libraries.ChildrenBook;
 import libraries.ChildrenLibraryHall;
 
 import java.util.Objects;
@@ -297,5 +298,15 @@ public class ScientificLibrary extends ScientificLibraryHall implements ILibrary
     @Override
     public ChildrenLibraryHall returnHall(int number) {
         return null;
+    }
+
+    @Override
+    public void addBook(ChildrenBook book, int number) {
+
+    }
+
+    @Override
+    public void changeBook(ChildrenBook book, int number) {
+
     }
 }

@@ -4,7 +4,7 @@ import Interface.IBook;
 
 import java.util.Objects;
 
-public class Book implements IBook, Cloneable {
+public class Book implements Cloneable {
     private String author, name;
     private int year;
     private double price;
@@ -87,5 +87,4 @@ public class Book implements IBook, Cloneable {
     public void setYear(int year) {
         this.year = year;
     }
-
 }
