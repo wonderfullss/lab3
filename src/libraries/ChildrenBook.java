@@ -34,7 +34,12 @@ public class ChildrenBook extends Book implements Cloneable, IBook {
 
     @Override
     public ChildrenBook clone() {
-        ChildrenBook book = new ChildrenBook(getName(), getAuthor(), getPrice(), getYear(), minAge);
+        ChildrenBook book = null;
+        try {
+            book = (ChildrenBook) super.clone();
+        } catch (CloneNotSupportedException ex) {
+
+        }
         return book;
     }
 

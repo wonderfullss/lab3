@@ -106,7 +106,16 @@ public class ChildrenLibraryHall implements IHall, Cloneable {
 
     @Override
     public ChildrenLibraryHall clone() {
-        ChildrenLibraryHall hall = new ChildrenLibraryHall(childrenHallName, array);
+        ChildrenLibraryHall hall = null;
+        try {
+            hall = (ChildrenLibraryHall) super.clone();
+            hall.array = new ChildrenBook[array.length];
+            for (int i = 0; i < array.length; i++) {
+                hall.array[i] = this.array[i].clone();
+            }
+        } catch (CloneNotSupportedException ex) {
+
+        }
         return hall;
     }
 

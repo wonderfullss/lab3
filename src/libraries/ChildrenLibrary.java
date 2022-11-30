@@ -22,7 +22,19 @@ public class ChildrenLibrary implements ILibrary, Cloneable {
 
     @Override
     public ChildrenLibrary clone() {
-        ChildrenLibrary library = new ChildrenLibrary(arrayHall);
+        ChildrenLibrary library = null;
+        try {
+            library = (ChildrenLibrary) super.clone();
+            library.arrayHall = new ChildrenLibraryHall[arrayHall.length];
+            for (int i = 0; i < arrayHall.length; i++) {
+                library.arrayHall[i] = this.arrayHall[i].clone();
+                for (int j = 0; j < arrayHall[i].getArray().length; j++) {
+                    library.arrayHall[i].getArray()[j] = this.arrayHall[i].getArray()[j].clone();
+                }
+            }
+        } catch (CloneNotSupportedException ex) {
+
+        }
         return library;
     }
 

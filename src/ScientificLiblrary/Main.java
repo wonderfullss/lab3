@@ -30,26 +30,9 @@ public class Main {
             System.out.println(book3.hashCode());
             System.out.println(hall1.hashCode());
             System.out.println(hall2.hashCode());
-            lib.print();
-            System.out.println("add Book");
-            lib.addBook(0, book4);
-            lib.print();
             System.out.println(lib);
             System.out.println(Arrays.toString(arrayHall));
             System.out.println(hall1);
-            System.out.println("remove book");
-            lib.deleteBook(3135);
-            lib.print();
-            System.out.println("change book");
-            System.out.println(2 + " " + lib.getBook(2).getAuthor());
-            lib.changeBook(2, book4);
-            System.out.println(2 + " " + lib.getBook(2).getAuthor());
-            System.out.println("");
-            lib.changeHall(0, hall3);
-            lib.print();
-            System.out.println("best book " + lib.getBestBoook().getPrice());
-            System.out.println("sort");
-            System.out.println(Arrays.toString(lib.sortedArr()));
         } catch (BookIndexOutOfBoundsException e) {
             System.out.println(e.getExpect());
         } catch (HallIndexOutOfBoundsException e) {

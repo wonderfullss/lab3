@@ -26,8 +26,20 @@ public class Test {
         ChildrenLibrary library = new ChildrenLibrary(Hall);
         try {
             ChildrenBook book = books[2].clone();
+            ChildrenBook book1 = books[1].clone();
+            System.out.println(book1.equals(books[1]));
+            book.setYear(123);
+            System.out.println(books[2].equals(book));
             ChildrenLibraryHall hallFree = Hall[0].clone();
+            ChildrenLibraryHall hallFree1 = Hall[1].clone();
+            hallFree.getArray()[0].setYear(1209);
+            System.out.println(Hall[0].equals(hallFree));
+            System.out.println(hallFree1.equals(Hall[1]));
             ChildrenLibrary libraryFree = library.clone();
+            ChildrenLibrary libraryFree1 = library.clone();
+            libraryFree.getArrayHall()[0].getArray()[0].setYear(213);
+            System.out.println(libraryFree1.equals(library));
+            System.out.println(library.equals(libraryFree));
             System.out.println(book);
             System.out.println(hallFree);
             System.out.println(libraryFree);
@@ -39,13 +51,6 @@ public class Test {
             System.out.println(Hall[0].hashCode());
             System.out.println(Hall[1].hashCode());
             System.out.println(Hall[2].hashCode());
-            ChildrenBook temp = new ChildrenBook("Бесы", "Dostoevskiy", 1200, 1869, 16);
-            System.out.println(library.returnBook(2));
-            library.addBook(temp, 6);
-            System.out.println(library);
-            library.delBook(-1);
-            System.out.println(library);
-            library.changeBook(temp, 0);
         } catch (BookIndexOutOfBoundsException e) {
             System.out.println(e.getExpect());
         } catch (HallIndexOutOfBoundsException e) {
